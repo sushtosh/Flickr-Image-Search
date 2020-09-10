@@ -1,0 +1,14 @@
+<div class="container-fluid">   
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand"  routerLink="">Image Search Application</a>
+        <div id="navbarSupportedContent">
+            <a routerLink="favourite" class="navbar-brand" href="#">Favourites</a>
+          </div>
+      </nav>
+    <div class="row" style="margin-left:80px">
+        <div *ngFor="let list of imagesList | async" class="card" style="margin:20px">
+            <a href="{{list.url}}_m_d.jpg"><img style="width:200px;height:130px;margin:10px;float:right" src="{{list.url}}_m.jpg" title="{{list.title}}"/></a>
+          </div>
+    </div>
+  </div>
+  

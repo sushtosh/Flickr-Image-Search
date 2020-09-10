@@ -1,0 +1,28 @@
+<div class="container-fluid">   
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Image Search Application</a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Image" aria-label="Search" [(ngModel)]="keyword" name="keyword">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()" type="submit">Search</button>
+        </form>
+        <div id="navbarSupportedContent">
+            <a routerLink="favourite" class="navbar-brand" href="#">Favourites</a>
+          </div>
+      </nav>
+    <div class="row" style="margin-left:80px">
+        <div *ngFor="let image of images" class="card" style="margin:20px">
+            <img style="width:324px;height:200px" class="card-img-top" src="{{image.url}}_m.jpg" title="{{image.title}}">
+            <div class="card-body">
+              <a class="card-link" href="https://www.flickr.com/people/{{image.author}}" target="_blank">Link to Author Page</a>
+              <a class="card-link"(click)="image.popup = true" style="cursor: pointer">Add to Favourites</a>
+            </div>
+            <div *ngIf="image.popup" class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let list of listCount" class="list-group-item"><a style="cursor: pointer" (click)="addImage(image,list)">{{list}}</a></li>
+                  </ul>
+                <h5 class="card-title" (click)="addListCount()" style="cursor: pointer">Create New List</h5>
+              </div>
+          </div>
+    </div>
+  </div>
+  
